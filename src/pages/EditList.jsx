@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import url from "../const";
-import "./editList.css";
+import "./editList.scss";
 
 function EditList() {
   const navigate = useNavigate();
@@ -66,20 +66,24 @@ function EditList() {
   return (
     <div>
       <Header />
-      <main className="edit-list">
+      <main id="main" className="edit-list">
         <h2>リスト編集</h2>
         <p className="error-message">{errorMessage}</p>
-        <form className="edit-list-form">
-          <label>タイトル</label>
-          <br />
-          <input
-            type="text"
-            className="edit-list-title"
-            value={title}
-            onChange={handleTitleChange}
-          />
+        <form id="form" className="edit-list-form">
+          <label htmlFor="titleInput">
+            タイトル
+            <br />
+            <input
+              id="titleInput"
+              type="text"
+              className="edit-list-title"
+              value={title}
+              onChange={handleTitleChange}
+            />
+          </label>
           <br />
           <button
+            id="deleteButton"
             type="button"
             className="delete-list-button"
             onClick={onDeleteList}
@@ -87,6 +91,7 @@ function EditList() {
             削除
           </button>
           <button
+            id="editButton"
             type="button"
             className="edit-list-button"
             onClick={onUpdateList}

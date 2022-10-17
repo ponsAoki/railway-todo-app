@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import url from "../const";
-import "./home.css";
+import "./home.scss";
 
 function Home() {
   const [isDoneDisplay, setIsDoneDisplay] = useState("todo"); // todo->未完了 done->完了
@@ -90,6 +90,8 @@ function Home() {
                   key={key}
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
+                  onKeyUp={() => handleSelectList(list.id)}
+                  aria-hidden="true"
                 >
                   {list.title}
                 </li>
@@ -127,9 +129,9 @@ export default Home;
 // 表示するタスク
 export function Tasks(props) {
   const { tasks, selectListId, isDoneDisplay } = props;
-  if (tasks === null) return <></>;
+  if (tasks === null) return null;
 
-  if (isDoneDisplay == "done") {
+  if (isDoneDisplay === "done") {
     return (
       <ul>
         {tasks

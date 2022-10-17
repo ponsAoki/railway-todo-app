@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { Header } from "../components/Header";
-import { url } from "../const";
-import "./newList.css";
+import Header from "../components/Header";
+import url from "../const";
+import "./newList.scss";
 
 function NewList() {
   const [cookies] = useCookies();
@@ -34,19 +34,23 @@ function NewList() {
   return (
     <div>
       <Header />
-      <main className="new-list">
+      <main id="main" className="new-list">
         <h2>リスト新規作成</h2>
         <p className="error-message">{errorMessage}</p>
-        <form className="new-list-form">
-          <label>タイトル</label>
-          <br />
-          <input
-            type="text"
-            onChange={handleTitleChange}
-            className="new-list-title"
-          />
+        <form id="form" className="new-list-form">
+          <label htmlFor="newListInput">
+            タイトル
+            <br />
+            <input
+              id="newListInput"
+              type="text"
+              onChange={handleTitleChange}
+              className="new-list-title"
+            />
+          </label>
           <br />
           <button
+            id="button"
             type="button"
             onClick={onCreateList}
             className="new-list-button"

@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { signIn } from "../authSlice";
-import { Header } from "../components/Header";
-import { url } from "../const";
-import "./signUp.css";
+import Header from "../components/Header";
+import url from "../const";
+import "./signUp.scss";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessge] = useState();
+  // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies();
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
@@ -39,7 +40,8 @@ function SignUp() {
         setErrorMessge(`サインアップに失敗しました。 ${err}`);
       });
 
-    if (auth) return <Redirect to="/" />;
+    if (auth) return <Navigate to="/" />;
+    return null;
   };
   return (
     <div>
@@ -48,31 +50,45 @@ function SignUp() {
         <h2>新規作成</h2>
         <p className="error-message">{errorMessage}</p>
         <form className="signup-form">
-          <label>メールアドレス</label>
+          <label htmlFor="emailInput">
+            メールアドレス
+            <br />
+            <input
+              id="emailInput"
+              type="email"
+              onChange={handleEmailChange}
+              className="email-input"
+            />
+          </label>
           <br />
-          <input
-            type="email"
-            onChange={handleEmailChange}
-            className="email-input"
-          />
+          <label htmlFor="nameInput">
+            ユーザ名
+            <br />
+            <input
+              id="nameInput"
+              type="text"
+              onChange={handleNameChange}
+              className="name-input"
+            />
+          </label>
           <br />
-          <label>ユーザ名</label>
+          <label htmlFor="passwrdInput">
+            パスワード
+            <br />
+            <input
+              id="passwrdInput"
+              type="password"
+              onChange={handlePasswordChange}
+              className="password-input"
+            />
+          </label>
           <br />
-          <input
-            type="text"
-            onChange={handleNameChange}
-            className="name-input"
-          />
-          <br />
-          <label>パスワード</label>
-          <br />
-          <input
-            type="password"
-            onChange={handlePasswordChange}
-            className="password-input"
-          />
-          <br />
-          <button type="button" onClick={onSignUp} className="signup-button">
+          <button
+            id="button"
+            type="button"
+            onClick={onSignUp}
+            className="signup-button"
+          >
             作成
           </button>
         </form>

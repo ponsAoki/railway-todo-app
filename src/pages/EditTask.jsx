@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
-// eslint-disable-next-line import/named
-import { Header } from "../components/Header";
+import Header from "../components/Header";
 import url from "../const";
-import "./editTask.css";
+import "./editTask.scss";
 
 function EditTask() {
   const navigate = useNavigate();
@@ -77,27 +76,33 @@ function EditTask() {
   return (
     <div>
       <Header />
-      <main className="edit-task">
+      <main id="main" className="edit-task">
         <h2>タスク編集</h2>
         <p className="error-message">{errorMessage}</p>
-        <form className="edit-task-form">
-          <label>タイトル</label>
+        <form id="form" className="edit-task-form">
+          <label htmlFor="titleInput">
+            タイトル
+            <br />
+            <input
+              id="titleInput"
+              type="text"
+              onChange={handleTitleChange}
+              className="edit-task-title"
+              value={title}
+            />
+          </label>
           <br />
-          <input
-            type="text"
-            onChange={handleTitleChange}
-            className="edit-task-title"
-            value={title}
-          />
-          <br />
-          <label>詳細</label>
-          <br />
-          <textarea
-            type="text"
-            onChange={handleDetailChange}
-            className="edit-task-detail"
-            value={detail}
-          />
+          <label htmlFor="dealArea">
+            詳細
+            <br />
+            <textarea
+              id="dealArea"
+              type="text"
+              onChange={handleDetailChange}
+              className="edit-task-detail"
+              value={detail}
+            />
+          </label>
           <br />
           <div>
             <input
@@ -120,6 +125,7 @@ function EditTask() {
             完了
           </div>
           <button
+            id="deleteButton"
             type="button"
             className="delete-task-button"
             onClick={onDeleteTask}
@@ -127,6 +133,7 @@ function EditTask() {
             削除
           </button>
           <button
+            id="editButton"
             type="button"
             className="edit-task-button"
             onClick={onUpdateTask}

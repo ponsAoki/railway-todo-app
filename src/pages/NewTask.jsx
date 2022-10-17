@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { Header } from "../components/Header";
-import { url } from "../const";
-import "./newTask.css";
+import Header from "../components/Header";
+import url from "../const";
+import "./newTask.scss";
 
 function NewTask() {
   const [selectListId, setSelectListId] = useState();
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(["今日", "明日", "今週中"]);
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -47,6 +47,7 @@ function NewTask() {
       })
       .then((res) => {
         setLists(res.data);
+        console.log(res.data);
         setSelectListId(res.data[0]?.id);
       })
       .catch((err) => {
@@ -57,40 +58,49 @@ function NewTask() {
   return (
     <div>
       <Header />
-      <main className="new-task">
+      <main id="main" className="new-task">
         <h2>タスク新規作成</h2>
         <p className="error-message">{errorMessage}</p>
-        <form className="new-task-form">
-          <label>リスト</label>
+        <form id="form" className="new-task-form">
+          <label htmlFor="listSelect">
+            リスト
+            <br />
+            <select
+              id="listSelect"
+              onChange={(e) => handleSelectList(e.target.value)}
+              className="new-task-select-list"
+            >
+              {lists.map((list, key) => (
+                <option key={key} className="list-item" value={list.id}>
+                  {list.title}
+                </option>
+              ))}
+            </select>
+          </label>
           <br />
-          <select
-            onChange={(e) => handleSelectList(e.target.value)}
-            className="new-task-select-list"
-          >
-            {lists.map((list, key) => (
-              <option key={key} className="list-item" value={list.id}>
-                {list.title}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="titleInput">
+            タイトル
+            <br />
+            <input
+              type="text"
+              onChange={handleTitleChange}
+              className="new-task-title"
+            />
+          </label>
           <br />
-          <label>タイトル</label>
-          <br />
-          <input
-            type="text"
-            onChange={handleTitleChange}
-            className="new-task-title"
-          />
-          <br />
-          <label>詳細</label>
-          <br />
-          <textarea
-            type="text"
-            onChange={handleDetailChange}
-            className="new-task-detail"
-          />
+          <label htmlFor="detailText">
+            詳細
+            <br />
+            <textarea
+              id="detailText"
+              type="text"
+              onChange={handleDetailChange}
+              className="new-task-detail"
+            />
+          </label>
           <br />
           <button
+            id="button"
             type="button"
             className="new-task-button"
             onClick={onCreateTask}

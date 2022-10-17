@@ -9,6 +9,7 @@ function Header() {
   const auth = useSelector((state) => state.auth.isSignIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies();
   const handleSignOut = () => {
     dispatch(signOut());
@@ -27,9 +28,7 @@ function Header() {
         >
           サインアウト
         </button>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </header>
   );
 }

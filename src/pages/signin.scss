@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+@use "../components/styles/signBase";
+
+.signin-form {
+  margin: 25px 0;
+}
+
+.email-label,
+.password-label {
+  color: #555555;
+}
+
+.email-input {
+}
