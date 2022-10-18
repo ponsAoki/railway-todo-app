@@ -34,10 +34,10 @@ function NewList() {
   return (
     <div>
       <Header />
-      <main id="main" className="new-list">
+      <main className="new-main">
         <h2>リスト新規作成</h2>
         <p className="error-message">{errorMessage}</p>
-        <form id="form" className="new-list-form">
+        <form id="form" className="new-form">
           <label htmlFor="newListInput">
             タイトル
             <br />
@@ -49,12 +49,7 @@ function NewList() {
             />
           </label>
           <br />
-          <button
-            id="button"
-            type="button"
-            onClick={onCreateList}
-            className="new-list-button"
-          >
+          <button type="button" onClick={onCreateList} className="new-button">
             作成
           </button>
         </form>

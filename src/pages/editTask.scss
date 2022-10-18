@@ -1,6 +1,10 @@
 @charset "utf-8";
 
-@use "../components/styles/editBase";
+@use "../styles/components/mains/editMain";
+@use "../styles/components/forms/editForm";
+@use "../styles/components/buttons/editButton";
+@use "../styles/components/buttons/deleteButton";
+@use "../styles/components/messages/errorMessage";
 
 .edit-task-title,
 .edit-task-detail {

@@ -76,10 +76,10 @@ function EditTask() {
   return (
     <div>
       <Header />
-      <main id="main" className="edit-task">
+      <main className="edit-main">
         <h2>タスク編集</h2>
         <p className="error-message">{errorMessage}</p>
-        <form id="form" className="edit-task-form">
+        <form className="edit-form">
           <label htmlFor="titleInput">
             タイトル
             <br />
@@ -125,19 +125,13 @@ function EditTask() {
             完了
           </div>
           <button
-            id="deleteButton"
             type="button"
-            className="delete-task-button"
+            className="delete-button"
             onClick={onDeleteTask}
           >
             削除
           </button>
-          <button
-            id="editButton"
-            type="button"
-            className="edit-task-button"
-            onClick={onUpdateTask}
-          >
+          <button type="button" className="edit-button" onClick={onUpdateTask}>
             更新
           </button>
         </form>

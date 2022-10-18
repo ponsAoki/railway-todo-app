@@ -1,6 +1,9 @@
 @charset "utf-8";
 
-@use "../components/styles/signBase";
+@use "../styles/components/mains/signMain";
+@use "../styles/components/buttons/signButton";
+@use "../styles/components/inputs/passwordInput";
+@use "../styles/components/messages/errorMessage.scss";
 
 .signin-form {
   margin: 25px 0;

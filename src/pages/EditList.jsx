@@ -66,10 +66,10 @@ function EditList() {
   return (
     <div>
       <Header />
-      <main id="main" className="edit-list">
+      <main className="edit-main">
         <h2>リスト編集</h2>
         <p className="error-message">{errorMessage}</p>
-        <form id="form" className="edit-list-form">
+        <form className="edit-form">
           <label htmlFor="titleInput">
             タイトル
             <br />
@@ -83,19 +83,13 @@ function EditList() {
           </label>
           <br />
           <button
-            id="deleteButton"
             type="button"
-            className="delete-list-button"
+            className="delete-button"
             onClick={onDeleteList}
           >
             削除
           </button>
-          <button
-            id="editButton"
-            type="button"
-            className="edit-list-button"
-            onClick={onUpdateList}
-          >
+          <button type="button" className="edit-button" onClick={onUpdateList}>
             更新
           </button>
         </form>

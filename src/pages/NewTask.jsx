@@ -58,10 +58,10 @@ function NewTask() {
   return (
     <div>
       <Header />
-      <main id="main" className="new-task">
+      <main className="new-main">
         <h2>タスク新規作成</h2>
         <p className="error-message">{errorMessage}</p>
-        <form id="form" className="new-task-form">
+        <form id="form" className="new-form">
           <label htmlFor="listSelect">
             リスト
             <br />
@@ -99,12 +99,7 @@ function NewTask() {
             />
           </label>
           <br />
-          <button
-            id="button"
-            type="button"
-            className="new-task-button"
-            onClick={onCreateTask}
-          >
+          <button type="button" className="new-button" onClick={onCreateTask}>
             作成
           </button>
         </form>

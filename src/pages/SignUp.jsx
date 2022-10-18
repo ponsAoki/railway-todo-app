@@ -46,7 +46,7 @@ function SignUp() {
   return (
     <div>
       <Header />
-      <main className="signup">
+      <main className="sign-main">
         <h2>新規作成</h2>
         <p className="error-message">{errorMessage}</p>
         <form className="signup-form">
@@ -83,12 +83,7 @@ function SignUp() {
             />
           </label>
           <br />
-          <button
-            id="button"
-            type="button"
-            onClick={onSignUp}
-            className="signup-button"
-          >
+          <button type="button" onClick={onSignUp} className="sign-button">
             作成
           </button>
         </form>

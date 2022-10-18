@@ -37,7 +37,7 @@ function SignIn() {
   return (
     <div>
       <Header />
-      <main className="signin">
+      <main className="sign-main">
         <h2>サインイン</h2>
         <p className="error-message">{errorMessage}</p>
         <form className="signin-form">
@@ -63,12 +63,7 @@ function SignIn() {
             />
           </label>
           <br />
-          <button
-            id="button"
-            type="button"
-            className="signin-button"
-            onClick={onSignIn}
-          >
+          <button type="button" className="sign-button" onClick={onSignIn}>
             サインイン
           </button>
         </form>
